@@ -21,7 +21,9 @@ CREATE TABLE IF NOT EXISTS `customer`
 ) NOT NULL, `updated_at` date DEFAULT NULL, `updated_by` varchar
 (
     20
-) NOT NULL );
+) DEFAULT NULL );
+
+
 CREATE TABLE IF NOT EXISTS `accounts`
 (
     `customer_id`
@@ -46,4 +48,4 @@ CREATE TABLE IF NOT EXISTS `accounts`
 ) NOT NULL, `updated_at` date DEFAULT NULL, `updated_by` varchar
 (
     20
-) NOT NULL )
+) DEFAULT NULL )

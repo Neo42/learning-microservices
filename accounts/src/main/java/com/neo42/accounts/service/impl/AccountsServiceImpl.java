@@ -9,6 +9,7 @@ import com.neo42.accounts.mapper.CustomerMapper;
 import com.neo42.accounts.repository.AccountsRepository;
 import com.neo42.accounts.repository.CustomerRepository;
 import com.neo42.accounts.service.IAccountsService;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
 import lombok.AllArgsConstructor;
@@ -32,6 +33,8 @@ public class AccountsServiceImpl implements IAccountsService {
       throw new CustomerAlreadyExistsException(
           "Customer already registered with give mobile number: " + customerDto.getMobileNumber());
     }
+    customer.setCreatedAt(LocalDateTime.now());
+    customer.setCreatedBy("Anonymous");
     Customer savedCustomer = customerRepository.save(customer);
     accountsRepository.save(createNewAccount(savedCustomer));
   }
@@ -44,6 +47,8 @@ public class AccountsServiceImpl implements IAccountsService {
     newAccount.setAccountNumber(randomAccNumber);
     newAccount.setAccountType(AccountsConstants.SAVINGS);
     newAccount.setBranchAddress(AccountsConstants.ADDRESS);
+    newAccount.setCreatedAt(LocalDateTime.now());
+    newAccount.setCreatedBy("Anonymous");
     return newAccount;
   }
 }

@@ -1,0 +1,10 @@
+POST http://localhost:8080/api/create
+Content-Type: application/json
+
+{
+  "name": "Hao Jiang",
+  "email": "hi@hao.me",
+  "mobileNumber": "0000000000"
+}
+
+###
