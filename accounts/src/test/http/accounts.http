@@ -30,3 +30,7 @@ Content-Type: application/json
     "branchAddress": "124 Main Street, New York"
   }
 }
+
+###
+DELETE http://{{host}}:{{port}}/api/delete?mobileNumber={{mobileNumber}}
+Accept: application/json
