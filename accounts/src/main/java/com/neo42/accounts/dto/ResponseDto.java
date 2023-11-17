@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ResponseDto {
-  @Schema(description = "HTTP response status code", example = "200")
+  @Schema(description = "HTTP response status code")
   private String statusCode;
 
-  @Schema(description = "HTTP response message", example = "Request processed successfully")
+  @Schema(description = "HTTP response message")
   private String statusMsg;
 }

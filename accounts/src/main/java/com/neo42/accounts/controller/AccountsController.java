@@ -34,7 +34,13 @@ public class AccountsController {
       summary = "Create a bank account",
       description =
           "Create a bank account with name, email, mobile number & account related information")
-  @ApiResponse(responseCode = "201", description = "HTTP response status: CREATED")
+  @ApiResponses({
+    @ApiResponse(responseCode = "201", description = "HTTP response status: CREATED"),
+    @ApiResponse(
+        responseCode = "500",
+        description = "HTTP response status: INTERNAL SERVER ERROR",
+        content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))),
+  })
   @PostMapping("/create")
   public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
     iAccountsService.createAccount(customerDto);
@@ -45,7 +51,13 @@ public class AccountsController {
   @Operation(
       summary = "Fetch details for an bank account",
       description = "Fetch Customer & Account details based on a mobile number")
-  @ApiResponse(responseCode = "200", description = "HTTP response status: OK")
+  @ApiResponses({
+    @ApiResponse(responseCode = "200", description = "HTTP response status: OK"),
+    @ApiResponse(
+        responseCode = "500",
+        description = "HTTP response status: INTERNAL SERVER ERROR",
+        content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))),
+  })
   @GetMapping("/fetch")
   public ResponseEntity<CustomerDto> fetchAccountDetails(
       @RequestParam @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits")
@@ -59,6 +71,7 @@ public class AccountsController {
       description = "Update Customer & Account details based on an account number")
   @ApiResponses({
     @ApiResponse(responseCode = "200", description = "HTTP response status: OK"),
+    @ApiResponse(responseCode = "417", description = "HTTP response status: EXPECTATION FAILED"),
     @ApiResponse(
         responseCode = "500",
         description = "HTTP response status: Internal Server Error",
@@ -83,6 +96,7 @@ public class AccountsController {
       description = "Delete Customer & Account details based on a mobile number")
   @ApiResponses({
     @ApiResponse(responseCode = "200", description = "HTTP response status: OK"),
+    @ApiResponse(responseCode = "417", description = "HTTP response status: EXPECTATION FAILED"),
     @ApiResponse(
         responseCode = "500",
         description = "HTTP response status: Internal Server Error",
