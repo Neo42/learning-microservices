@@ -2,9 +2,12 @@ package com.neo42.accounts.controller;
 
 import com.neo42.accounts.constants.AccountsConstants;
 import com.neo42.accounts.dto.CustomerDto;
+import com.neo42.accounts.dto.ErrorResponseDto;
 import com.neo42.accounts.dto.ResponseDto;
 import com.neo42.accounts.service.IAccountsService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -56,7 +59,10 @@ public class AccountsController {
       description = "Update Customer & Account details based on an account number")
   @ApiResponses({
     @ApiResponse(responseCode = "200", description = "HTTP response status: OK"),
-    @ApiResponse(responseCode = "500", description = "HTTP response status: Internal Server Error"),
+    @ApiResponse(
+        responseCode = "500",
+        description = "HTTP response status: Internal Server Error",
+        content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))),
   })
   @PutMapping("/update")
   public ResponseEntity<ResponseDto> updateAccountDetails(
@@ -76,7 +82,10 @@ public class AccountsController {
       description = "Delete Customer & Account details based on a mobile number")
   @ApiResponses({
     @ApiResponse(responseCode = "200", description = "HTTP response status: OK"),
-    @ApiResponse(responseCode = "500", description = "HTTP response status: Internal Server Error"),
+    @ApiResponse(
+        responseCode = "500",
+        description = "HTTP response status: Internal Server Error",
+        content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))),
   })
   @DeleteMapping("/delete")
   public ResponseEntity<ResponseDto> deleteAccountDetails(
