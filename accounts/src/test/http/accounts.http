@@ -16,3 +16,17 @@ Content-Type: application/json
 }
 
 ###
+PUT http://{{host}}:{{port}}/api/update
+Content-Type: application/json
+
+
+{
+  "name": "Hao Jian",
+  "email": "hao@neo42.me",
+  "mobileNumber": "0000000001",
+  "accountsDto": {
+    "accountNumber": 1222977316,
+    "accountType": "Current",
+    "branchAddress": "124 Main Street, New York"
+  }
+}
