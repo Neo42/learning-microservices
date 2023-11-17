@@ -1,4 +1,12 @@
-POST http://localhost:8080/api/create
+GET http://{{host}}:{{port}}/api/fetch?mobileNumber={{mobileNumber}}
+Accept: application/json
+
+###
+GET http://{{host}}:{{port}}/api/fetch?mobileNumber=123123123
+Accept: application/json
+
+###
+POST http://{{host}}:{{port}}/api/create
 Content-Type: application/json
 
 {
